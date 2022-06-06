@@ -58,3 +58,15 @@ Let's get going with =bundle agent init=.
           rmdirs   => "true";
   }
 #+end_src
+
+There we go, that should be enough to set the stage and make sure the test file does not exist when we exercise =report_to_file= in the =test= bundle.
+
+#+begin_src cfengine3 :include-stdlib nil :log-level info :exports both :tangle /tmp/example-test.cf
+  bundle agent test
+  # @brief Test that report_to_file causes reports promises to be directed into a file.
+  {
+    reports:
+        "Hello World!"
+          report_to_file => "$(init.testfile)";
+  }
+#+end_src
