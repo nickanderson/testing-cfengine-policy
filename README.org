@@ -90,3 +90,18 @@ Next we need to check that the file does indeed contain the expected content and
                           "FAIL" );
   }
 #+end_src
+
+Let's cleanup that test artifact.
+
+#+caption: bundle agent cleanup
+#+begin_src cfengine3 :include-stdlib nil :log-level info :exports both :tangle /tmp/example-test.cf
+  bundle agent cleanup
+  # @brief Clean up after checking test results
+  {
+    files:
+        "$(init.testfile)"
+          delete => my_tidy,
+          if => fileexists( "$(init.testfile)" );
+  }
+#+end_src
+
