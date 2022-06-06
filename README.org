@@ -30,3 +30,9 @@ These stages map well to a sequence of bundles. So, a simple test template could
   bundle agent cleanup
   {}
 #+end_src
+
+Let's take this template and start filling it in. First, we need some test case. Let's do something simple, for example, making sure the =reports= promise type attribute [[https://docs.cfengine.com/docs/3.18/reference-promise-types-reports.html#report_to_file][report_to_file]] 
+works as expected.
+
+=report_to_file= simply emits a report to a file instead of to standard output. To initilize the test we might want to make sure the file we report to does not exist, then we would test reporting to the file. After reporting to the file we would inspect the file to make sure the content within matches our expectations before finally cleaning up that test file.
+
