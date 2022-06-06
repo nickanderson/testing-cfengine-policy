@@ -2,3 +2,9 @@
 
 Testing is an important part of the software life-cycle. Writing tests for your CFEngine policy can help to bring improved assurance that your policy behaves as expected. Follow along and write your first test policy.
 
+When writing tests there are three or four basic stages that typically need to be handled:
+- Initialization :: Set up the necessary conditions for the test, e.g. create some file's to be edited.
+- Testing :: Running the policy whose behavior you wish to test.
+- Checking :: Inspecting the results of the test policy to see if they conform with expectations.
+- Cleanup :: You might need to cleanup artifacts produced by the test if your testing system does not handle it for you
+
