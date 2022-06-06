@@ -1,0 +1,4 @@
+#+title: Testing CFEngine Policy
+
+Testing is an important part of the software life-cycle. Writing tests for your CFEngine policy can help to bring improved assurance that your policy behaves as expected. Follow along and write your first test policy.
+
