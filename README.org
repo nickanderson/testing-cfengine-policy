@@ -8,3 +8,25 @@ When writing tests there are three or four basic stages that typically need to b
 - Checking :: Inspecting the results of the test policy to see if they conform with expectations.
 - Cleanup :: You might need to cleanup artifacts produced by the test if your testing system does not handle it for you
 
+These stages map well to a sequence of bundles. So, a simple test template could look like this:
+
+#+caption: Simple test template
+#+begin_src cfengine3 :include-stdlib nil :log-level info :exports both
+  bundle agent __main__
+  {
+    methods:
+        "init";
+        "test";
+        "check";
+        "cleanup";
+  }
+
+  bundle agent init
+  {}
+  bundle agent test
+  {}
+  bundle agent check
+  {}
+  bundle agent cleanup
+  {}
+#+end_src
