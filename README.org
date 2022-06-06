@@ -105,3 +105,33 @@ Let's cleanup that test artifact.
   }
 #+end_src
 
+
+And finally, lets add =bundle agent __main__= to drive this bundle sequence if the test is the policy entry.
+
+#+caption: bundle agent __main__
+#+begin_src cfengine3 :include-stdlib nil :log-level info :exports both :tangle /tmp/example-test.cf
+  bundle agent __main__
+  # @brief Clean up after checking test results
+  {
+    methods:
+        "init";
+        "test";
+        "check";
+        "cleanup";
+  }
+#+end_src
+
+Let's put all that into =/tmp/example-test.cf= and run it.
+
+#+caption: Run the example test
+#+begin_src sh :results output :exports both
+  exec 2>&1
+  cf-agent --no-lock --file /tmp/example-test.cf
+  :
+#+end_src
+
+#+caption: Test output
+#+RESULTS:
+: R: Pass
+
+Great! Now we have a functioning test.
